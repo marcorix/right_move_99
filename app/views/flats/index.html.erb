@@ -1,1 +1,8 @@
-<h1>Welcome to Right Move 99 </h1>
+<div class="container">
+  <h1>Welcome to Right Move 99 </h1>
+  <ul>
+    <% @flats.each do |flat| %>
+      <li><%= link_to flat.name, flat_path(flat) %></li>
+    <% end %>
+  </ul>
+</div>
