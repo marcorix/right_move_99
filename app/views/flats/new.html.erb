@@ -6,6 +6,7 @@
     <%= f.input :guests %>
     <%= f.input :property_type, collection: Flat::TYPES %>
     <%= f.input :price %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit class: 'btn btn-info' %>
   <% end %>
 </div>

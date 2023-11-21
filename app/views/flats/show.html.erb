@@ -1,5 +1,12 @@
 <div class="container">
   <h1><%= @flat.name %></h1>
-  <p>📍 <%= @flat.address %></p>
-  <p>👥 <%= @flat.guests %></p>
+  <p> 📍 <%= @flat.address %></p>
+  <p> 👥 <%= @flat.guests %></p>
+  <div class="cards">
+      <% @flat.photos.each do |photo| %>
+        <div class="flat-img">
+          <%= cl_image_tag photo.key , height: 200, width: 300, crop: :fill %>
+        </div>
+      <% end %>
+  </div>
 </div>
