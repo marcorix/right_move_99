@@ -9,4 +9,11 @@
         </div>
       <% end %>
   </div>
+
+  <div class="reviews-container d-flex mt-4 p-4" data-controller="insert-reviews">
+    <div class="review-form w-50 me-3">
+      <%= render 'reviews/form', { flat: @flat, review: @review } %>
+    </div>
+    <div class="review-form w-50 ms-2" data-insert-reviews-target="list"></div>
+  </div>
 </div>
