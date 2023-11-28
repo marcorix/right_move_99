@@ -5,12 +5,14 @@ class ReviewsController < ApplicationController
     @review.flat = @flat
     @review.user = current_user
 
-    if @review.save
+    respond_to do |format|
+      if @review.save!
         format.html { redirect_to flat_path(@flat)}
         format.json    
-    else
+      else
         format.html { render "monuments/new", status: :unprocessable_entity }
         format.json
+      end
     end
   end
 

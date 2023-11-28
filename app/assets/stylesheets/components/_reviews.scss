@@ -4,4 +4,15 @@
 
 .review-form {
     background-color: rgb(245, 199, 159);
+    padding: 24px;
+}
+
+.review-card {
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 16px;
+    p {
+        margin: 0;
+    }
 }

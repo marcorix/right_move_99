@@ -1,19 +1,34 @@
 <div class="container">
-  <h1><%= @flat.name %></h1>
-  <p> 📍 <%= @flat.address %></p>
-  <p> 👥 <%= @flat.guests %></p>
-  <div class="cards">
-      <% @flat.photos.each do |photo| %>
-        <div class="flat-img">
-          <%= cl_image_tag photo.key , height: 200, width: 300, crop: :fill %>
-        </div>
-      <% end %>
+
+  <div class="d-flex">
+    <div class="flat-info w-75">
+      <h1><%= @flat.name %></h1>
+      <p> 📍 <%= @flat.address %></p>
+      <p> 👥 <%= @flat.guests %></p>
+      <div class="cards">
+          <% @flat.photos.each do |photo| %>
+            <div class="flat-img">
+              <%= cl_image_tag photo.key , height: 200, width: 300, crop: :fill %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  
+    <div class="booking-form w-25 mt-5">
+      <%= render 'bookings/form', {flat: @flat, booking: @booking}  %>
+    </div>
+    
   </div>
 
   <div class="reviews-container d-flex mt-4 p-4" data-controller="insert-reviews">
     <div class="review-form w-50 me-3">
       <%= render 'reviews/form', { flat: @flat, review: @review } %>
     </div>
-    <div class="review-form w-50 ms-2" data-insert-reviews-target="list"></div>
+    <div class="review-form w-50 ms-2" data-insert-reviews-target="list">
+      <% @flat.reviews.each do |review| %>
+        <%= render 'reviews/review', review: review %>
+      <% end %>
+    </div>
   </div>
+
 </div>

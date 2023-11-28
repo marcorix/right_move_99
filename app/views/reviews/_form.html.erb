@@ -1,9 +1,12 @@
-<%= simple_form_for [flat, review],
-  data: {
-    insert_reviews_target: "form",
-    action: "insert-reviews#insert"
-  } do |f|%>
-  <%= f.input :rating, collection: (1..5) %>
-  <%= f.input :content %>
-  <%= f.submit %>
-<% end %>
+<div>
+  <h3>Leave a Review</h3>
+  <%= simple_form_for [flat, review],
+    data: {
+      insert_reviews_target: "form",
+      action: "insert-reviews#insert"
+    } do |f|%>
+    <%= f.input :rating, collection: (1..5) %>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
+</div>
