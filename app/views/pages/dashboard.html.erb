@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Dashboard</h1>
+  <ul>
+    <% current_user.bookings.each do |booking| %>
+      <li><p><%= booking.flat.name %></p> from: <%= booking.flat.name %> to: <%= booking.flat.name %></li>
+    <% end %>
+  </ul>
+</div>

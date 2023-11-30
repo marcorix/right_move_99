@@ -1,0 +1,9 @@
+<div id= "upvote-#{flat.id}">
+  <%= link_to like_flat_path(flat), data: {turbo_method: :patch} do %>
+    <% if current_user.voted_for? flat %>
+      <i class="far fa-thumbs-up" style="color: red;"></i>
+    <% else %>
+      <i class="far fa-thumbs-up"></i>
+    <% end %>
+  <% end %>
+</div>

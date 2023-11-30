@@ -36,6 +36,12 @@ gem "cloudinary"
 
 gem 'psych', '~>3.0'
 
+gem 'acts_as_votable'
+
+gem 'image_suckr'
+
+gem "unsplash_image"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
