@@ -2,7 +2,7 @@
   <h1>Dashboard</h1>
   <ul>
     <% current_user.bookings.each do |booking| %>
-      <li><p><%= booking.flat.name %></p> from: <%= booking.flat.name %> to: <%= booking.flat.name %></li>
+      <li><p><%= booking.flat.name %></p> from: <%= booking.start_date.strftime("%A %d %b %Y") %> to: <%= booking.end_date.strftime("%A %d %b %Y") %></li>
     <% end %>
   </ul>
 </div>
