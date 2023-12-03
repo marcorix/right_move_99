@@ -9,4 +9,16 @@
         </div>
       <% end %>
   </div>
+  <hr>
+  <h2>Leave a review</h2>
+  <%= simple_form_for [@flat, @review] do |f| %>
+    <%=  f.input :comment %>
+    <%= f.input :rating, collection: (1..5) %>
+    <%= f.submit %>
+  <% end %>
+  <hr>
+  <ul>
+    <%= @flat.reviews.each do |review|%>
+    <% end %>
+  </ul>
 </div>

@@ -1,11 +1,33 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_flat, only: [:show]
-  def index
+
+  def map
     @flats = Flat.all
+    
+    if params[:query].present?
+      @flats = Flat.search_by_name_and_address_and_property_type(params[:query])
+    end
+
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
+
   end
 
-  def show;end
+  def index
+    @flats = Flat.all
+    if params[:query].present?
+      @flats = Flat.search_by_name_and_address_and_property_type(params[:query])
+    end
+  end
+
+  def show
+    @review = Review.new
+  end
 
   def new
     @flat = Flat.new

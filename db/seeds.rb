@@ -1,7 +1,7 @@
 require "open-uri"
 
 puts "Cleaning DB"
-
+Review.destroy_all
 Flat.destroy_all
 User.destroy_all
 
