@@ -20,10 +20,11 @@
     </div>
 
   </div>
-  
+
   <%# Reviews %>
   <div class="reviews-container d-flex mt-4 p-4" data-controller="insert-reviews">
     <div class="review-form w-50 me-3">
+      <h2>Leave a Review</h2>
       <%= render 'reviews/form', { flat: @flat, review: @review } %>
     </div>
     <div class="review-form w-50 ms-2" data-insert-reviews-target="list">

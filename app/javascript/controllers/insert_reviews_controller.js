@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     console.log("heila'")
-    console.log(this.formTarget.action)
+    console.log(this.formTarget)
     console.log(this.listTarget)
   }
 
@@ -26,4 +26,3 @@ export default class extends Controller {
     })
   }
 }
-
