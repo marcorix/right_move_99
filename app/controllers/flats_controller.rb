@@ -1,10 +1,11 @@
 class FlatsController < ApplicationController
+
   skip_before_action :authenticate_user!, only: :index
   before_action :set_flat, only: [:show]
 
   def map
     @flats = Flat.all
-    
+
     if params[:query].present?
       @flats = Flat.search_by_name_and_address_and_property_type(params[:query])
     end
@@ -15,7 +16,6 @@ class FlatsController < ApplicationController
         lng: flat.longitude
       }
     end
-
   end
 
   def index
@@ -25,7 +25,27 @@ class FlatsController < ApplicationController
     end
   end
 
+
+  def like
+    if current_user.voted_up_on? @flat
+      @flat.unvote_by current_user
+    else
+      @flat.upvote_by current_user
+    end
+
+    respond_to do |format|
+      format.html do
+        redirect_to flats_path
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@flat, partial: 'flats/flat', locals: {flat: @flat})
+      end
+    end
+  end
+
+
   def show
+    @booking = Booking.new
     @review = Review.new
   end
 

@@ -1,0 +1,5 @@
+ <div id="<%= dom_id flat %>" class="flat-card">
+  <%= link_to flat.name, flat_path(flat) %>
+  <%= render 'like_link', flat: flat %>
+  <span><%= flat.votes_for.size %></span>
+</div>

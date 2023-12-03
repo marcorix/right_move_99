@@ -3,6 +3,8 @@ class Flat < ApplicationRecord
   has_many :reviews
   has_many_attached :photos
 
+  acts_as_votable
+
   TYPES = %w(flat maisonette detached)
 
   geocoded_by :address
