@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_30_112301) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_03_200806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_112301) do
     t.datetime "updated_at", null: false
     t.index ["flat_id"], name: "index_bookings_on_flat_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_1_id"
+    t.bigint "user_2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_1_id"], name: "index_chatrooms_on_user_1_id"
+    t.index ["user_2_id"], name: "index_chatrooms_on_user_2_id"
   end
 
   create_table "flats", force: :cascade do |t|
@@ -111,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_112301) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
+  add_foreign_key "chatrooms", "users", column: "user_1_id"
+  add_foreign_key "chatrooms", "users", column: "user_2_id"
   add_foreign_key "flats", "users"
   add_foreign_key "reviews", "flats"
   add_foreign_key "reviews", "users"
