@@ -12,7 +12,7 @@ class ChatroomsController < ApplicationController
     if chatroom.save!
       redirect_to chatroom_path(chatroom)
     else
-      render 'pages/dashboard'
+      render 'pages/dashboard', stauts: :unprocessable_entity
     end
   end
 end

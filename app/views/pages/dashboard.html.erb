@@ -1,11 +1,6 @@
 <div class="container">
   <h1>Dashboard</h1>
-  <%= form_with url: chatrooms_path, method: :post, class: "d-flex" do %>
-    <%= hidden_field_tag :user_id,
-          current_user.id
-      %>
-    <%= submit_tag "Sens a message", name: "", class: "btn btn-primary" %>
-  <% end %>
+  <%= render 'message_link' %>
   <ul>
     <% current_user.bookings.each do |booking| %>
       <li><p><%= booking.flat.name %></p> from: <%= booking.start_date.strftime("%A %d %b %Y") %> to: <%= booking.end_date.strftime("%A %d %b %Y") %></li>

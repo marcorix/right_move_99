@@ -1,0 +1,12 @@
+<% if Chatroom.where(user_1: 2, user_2: current_user.id).empty? %>
+  <%= form_with url: chatrooms_path, method: :post, class: "d-flex" do %>
+    <%= hidden_field_tag :user_id,
+          current_user.id
+      %>
+    <%= submit_tag "Sens a message", name: "", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <%= form_with url: chatroom_path(Chatroom.where(user_1: 1, user_2: 1).last), method: :get, class: "d-flex" do %>
+    <%= submit_tag "Sens a message", name: "", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
