@@ -12,6 +12,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to dashboard_path, status: 303
+    # respond_to do |format|
+    #   format.html {redirect_to dashboard_path}
+    # end
+  end
+
   private
 
   def booking_params

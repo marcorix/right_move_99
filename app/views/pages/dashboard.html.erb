@@ -1,9 +1,13 @@
-<div class="container">
+<div class="container"  >
   <h1>Dashboard</h1>
   <%= render 'message_link' %>
   <ul>
     <% current_user.bookings.each do |booking| %>
-      <li><p><%= booking.flat.name %></p> from: <%= booking.start_date.strftime("%A %d %b %Y") %> to: <%= booking.end_date.strftime("%A %d %b %Y") %></li>
+      <li data-controller="bookings" data-bookings-id-value="<%= booking.id%>">
+        <p><%= booking.flat.name %></p> 
+        from: <%= booking.start_date.strftime("%A %d %b %Y") %> to: <%= booking.end_date.strftime("%A %d %b %Y") %>
+        <i class="fa-solid fa-trash" data-action="click->bookings#delete_booking" ></i>
+      </li>
     <% end %>
   </ul>
 </div>

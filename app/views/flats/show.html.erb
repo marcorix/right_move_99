@@ -6,6 +6,7 @@
       <h1><%= @flat.name %></h1>
       <p> 📍 <%= @flat.address %></p>
       <p> 👥 <%= @flat.guests %></p>
+      <p> Owner: <%= @flat.user.email.match(/^([^@]+)/) %></p>
       <div class="cards">
           <% @flat.photos.each do |photo| %>
             <div class="flat-img">
