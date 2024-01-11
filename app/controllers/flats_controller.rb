@@ -1,5 +1,6 @@
 class FlatsController < ApplicationController
 
+
   # skip_before_action :authenticate_user!, only: :index
   before_action :set_flat, only: [:show, :like]
 
@@ -17,6 +18,7 @@ class FlatsController < ApplicationController
       }
     end
   end
+
 
   def index
     @flats = Flat.all
