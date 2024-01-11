@@ -1,7 +1,7 @@
 class FlatsController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: :index
-  before_action :set_flat, only: [:show]
+  # skip_before_action :authenticate_user!, only: :index
+  before_action :set_flat, only: [:show, :like]
 
   def map
     @flats = Flat.all
