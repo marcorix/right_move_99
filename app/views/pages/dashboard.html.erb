@@ -4,9 +4,11 @@
   <ul>
     <% current_user.bookings.each do |booking| %>
       <li data-controller="bookings" data-bookings-id-value="<%= booking.id%>">
-        <p><%= booking.flat.name %></p> 
+        <p><%= booking.flat.name %></p>
         from: <%= booking.start_date.strftime("%A %d %b %Y") %> to: <%= booking.end_date.strftime("%A %d %b %Y") %>
-        <i class="fa-solid fa-trash" data-action="click->bookings#delete_booking" ></i>
+        <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: 'Are you sure'} do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
       </li>
     <% end %>
   </ul>

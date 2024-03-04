@@ -3,10 +3,13 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
-  static targets = ['start', 'end', 'checkIn']
-   
+  static targets = ['start', 'end', 'checkIn', 'total']
+  static values = {
+    price: Number
+  }
+
   connect() {
-    console.log(this.startTarget, this.endTarget, this.checkInTarget)
+
     flatpickr(this.checkInTarget, {
       mode: "range",
       onChange: ([start, end]) => {
@@ -14,7 +17,17 @@ export default class extends Controller {
           this.startTarget.value = start;
           this.endTarget.value = end;
         }
+        this.calculateDays();
       }
     });
   }
+
+  calculateDays() {
+    const start = new Date(this.startTarget.value);
+    const end = new Date(this.endTarget.value);
+    const diffTime = Math.abs(end - start);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    this.totalTarget.innerText = diffDays * this.priceValue;
+  }
+
 }

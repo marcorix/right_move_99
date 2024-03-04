@@ -1,6 +1,7 @@
-<%= simple_form_for [flat, booking], data: {controller: "flatpickr"} do |f| %>
-  <%= f.input :check_in, label: 'Check In/Out', input_html: { data: {flatpickr_target: "checkIn"}} %>
+<%= simple_form_for [flat, booking], data: {controller: "flatpickr", flatpickr_price_value: "#{flat.price}"} do |f| %>
+  <%= f.input :check_in, label: 'Check In/Out', input_html: { data: {flatpickr_target: "checkIn"}}%>
   <%= f.input :start_date, :as => :hidden, input_html: { data: {flatpickr_target: "start"}} %>
   <%= f.input :end_date, :as => :hidden,  input_html: { data: {flatpickr_target: "end"}} %>
+  <div ><p>£ <span class="bg-warning text-white p-2 ms-2" data-flatpickr-target= "total">0.00</span></p> </div>
   <%= f.submit class: 'btn btn-warning' %>
 <% end %>

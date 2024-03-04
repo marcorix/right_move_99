@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.flat = @flat
     if @booking.save!
+      flash[:notice] = "You book #{@booking.flat.name}"
       redirect_to dashboard_path
     else
       render 'flats/show', status: :unprocessable_entity
