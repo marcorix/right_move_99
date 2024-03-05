@@ -3,5 +3,5 @@
   <%= f.input :start_date, :as => :hidden, input_html: { data: {flatpickr_target: "start"}} %>
   <%= f.input :end_date, :as => :hidden,  input_html: { data: {flatpickr_target: "end"}} %>
   <div ><p>£ <span class="bg-warning text-white p-2 ms-2" data-flatpickr-target= "total">0.00</span></p> </div>
-  <%= f.submit class: 'btn btn-warning' %>
+  <%= f.submit 'Book', class: 'btn btn-warning w-100' %>
 <% end %>

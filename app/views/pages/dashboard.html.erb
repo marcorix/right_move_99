@@ -1,6 +1,6 @@
 <div class="container"  >
   <h1>Dashboard</h1>
-  <%= render 'message_link' %>
+  <%# <%= render 'message_link' %> 
   <ul>
     <% current_user.bookings.each do |booking| %>
       <li data-controller="bookings" data-bookings-id-value="<%= booking.id%>">

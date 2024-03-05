@@ -27,7 +27,8 @@ export default class extends Controller {
     const end = new Date(this.endTarget.value);
     const diffTime = Math.abs(end - start);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    this.totalTarget.innerText = diffDays * this.priceValue;
+    const totalPrice = diffDays * this.priceValue
+    this.totalTarget.innerText = totalPrice.toFixed(2);
   }
 
 }

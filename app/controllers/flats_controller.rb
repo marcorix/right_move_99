@@ -49,6 +49,10 @@ class FlatsController < ApplicationController
   def show
     @booking = Booking.new
     @review = Review.new
+    @markers = [{
+        lat: @flat.latitude,
+        lng: @flat.longitude
+      }]
   end
 
   def new

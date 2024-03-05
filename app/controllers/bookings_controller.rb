@@ -5,6 +5,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.flat = @flat
+    name = "#{current_user.email.match(/^([^@]+)/)} / #{@flat.user.email.match(/^([^@]+)/)}"
+    Chatroom.create!(owner: @flat.user, tenant: current_user, name: name)
     if @booking.save!
       flash[:notice] = "You book #{@booking.flat.name}"
       redirect_to dashboard_path
