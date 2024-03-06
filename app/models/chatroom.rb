@@ -1,7 +1,8 @@
 class Chatroom < ApplicationRecord
-  belongs_to :owner, class_name: "User"
+  belongs_to :booking
   belongs_to :tenant, class_name: "User"
-
-  validates :owner, uniqueness: { scope: :tenant,
-    message: "you already have a chat with this user" }
+  has_many :messages
+  
+  validates :booking, uniqueness: { scope: :tenant,
+    message: "you already have a chat with this booking" }
 end

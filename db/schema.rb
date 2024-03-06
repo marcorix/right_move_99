@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_03_200806) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_06_145453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,11 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_200806) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
-    t.bigint "owner_id"
+    t.bigint "booking_id", null: false
     t.bigint "tenant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_chatrooms_on_owner_id"
+    t.index ["booking_id"], name: "index_chatrooms_on_booking_id"
     t.index ["tenant_id"], name: "index_chatrooms_on_tenant_id"
   end
 
@@ -75,6 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_200806) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_flats_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -121,9 +131,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_200806) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "flats"
   add_foreign_key "bookings", "users"
-  add_foreign_key "chatrooms", "users", column: "owner_id"
+  add_foreign_key "chatrooms", "bookings"
   add_foreign_key "chatrooms", "users", column: "tenant_id"
   add_foreign_key "flats", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "reviews", "flats"
   add_foreign_key "reviews", "users"
 end

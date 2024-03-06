@@ -1,11 +1,11 @@
 <div class="container"  >
   <h1>Dashboard</h1>
-  <%# <%= render 'message_link' %> 
-  <ul>
+  <ul class="list-group">
     <% current_user.bookings.each do |booking| %>
-      <li data-controller="bookings" data-bookings-id-value="<%= booking.id%>">
+      <li class="list-group-item list-group-item-success" data-controller="bookings" data-bookings-id-value="<%= booking.id%>">
         <p><%= booking.flat.name %></p>
         from: <%= booking.start_date.strftime("%A %d %b %Y") %> to: <%= booking.end_date.strftime("%A %d %b %Y") %>
+        <%= render 'message_link', booking: booking %> |
         <%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: 'Are you sure'} do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>

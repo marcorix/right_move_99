@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:destroy]
-  resources :chatrooms, only: [:create, :show]
+  resources :chatrooms, only: [:show] do
+    resources :messages, only: [:create]
+  end
 
 end
